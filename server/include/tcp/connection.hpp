@@ -11,8 +11,14 @@ namespace daytime {
         namespace tcp {
             class connection : public std::enable_shared_from_this<connection> {
             public:
+                connection(asio::io_context& io_context) 
+                    : socket_(io_context)
+                {
+                    
+                }
+
                 static auto create(asio::io_context& io_context) {
-                    return std::shared_ptr<connection>(new connection(io_context)); 
+                    return std::make_shared<connection>(io_context); 
                 }
 
                 auto& socket() const noexcept {
@@ -23,13 +29,7 @@ namespace daytime {
                     return socket_;
                 }
 
-                void start();
-            private:
-                connection(asio::io_context& io_context) 
-                    : socket_(io_context)
-                {
-                    
-                }
+                void start(); 
             private:
                 asio::ip::tcp::socket socket_;
                 std::string message_;
