@@ -1,6 +1,6 @@
-project(udp_client)
+project(daytime_client_udp)
 
 file(GLOB_RECURSE SOURCE_FILES src/*.cpp)
-add_executable(udp_client ${SOURCE_FILES})
-target_include_directories(udp_client PRIVATE include)
-target_link_libraries(udp_client Threads::Threads)
+add_executable(daytime_client_udp ${SOURCE_FILES})
+target_include_directories(daytime_client_udp PRIVATE include)
+target_link_libraries(daytime_client_udp Threads::Threads)
