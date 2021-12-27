@@ -12,7 +12,7 @@ namespace daytime {
             public:
                 server(asio::io_context& io_context) 
                     : io_context_(io_context),
-                      socket_(io_context)
+                      socket_(io_context, asio::ip::udp::endpoint(asio::ip::udp::v4(), 13))
                 {
                     do_receive();
                 }
