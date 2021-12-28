@@ -1,4 +1,6 @@
 project(daytime_client)
 
-add_subdirectory(tcp)
-add_subdirectory(udp)
+file(GLOB_RECURSE SOURCE_FILES src/*.cpp)
+add_executable(daytime_client ${SOURCE_FILES})
+target_include_directories(daytime_client PRIVATE include)
+target_link_libraries(daytime_client Threads::Threads)
